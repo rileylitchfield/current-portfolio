@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-deployment
+  labels:
+    app: portfolio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: portfolio
+  template:
+    metadata:
+      labels:
+        app: portfolio
+    spec:
+      containers:
+      - name: portfolio
+        image: rileywebdev/website-app:v1.0.0
+        ports:
+        - containerPort: 80
+        env:
+        - name: SMTP_HOST
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: SMTP_HOST
+        - name: SMTP_PORT
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: SMTP_PORT
+        - name: SMTP_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: SMTP_USERNAME
+        - name: SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: SMTP_PASSWORD
+        - name: FROM_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: FROM_EMAIL
+        - name: TO_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: TO_EMAIL
