@@ -1,4 +1,4 @@
-#### Personal Website Deployed with Kubernetes
+### Personal Website Deployed with Kubernetes
 
 A responsive personal website featuring a contact form powered by a PHP backend. This project is fully containerized with Docker and deployed to a Kubernetes cluster on DigitalOcean, showcasing modern DevOps practices such as container orchestration, secrets management, and scalable deployments.
 
