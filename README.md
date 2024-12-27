@@ -1,6 +1,3 @@
-# current-portfolio
-A responsive personal website featuring a contact form powered by a PHP backend. The project is containerized with Docker to streamline deployment and scalability.
-
 # Personal Website with Dockerized Backend
 
 A responsive personal website featuring a contact form powered by a PHP backend. This project is fully containerized with Docker, making it easy to deploy and scale, while highlighting modern development and deployment practices.
