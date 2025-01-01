@@ -4,6 +4,7 @@ metadata:
   name: portfolio-deployment
   labels:
     app: portfolio
+    version: v1.0.1
 spec:
   replicas: 2
   selector:
@@ -13,40 +14,61 @@ spec:
     metadata:
       labels:
         app: portfolio
+        version: v1.0.1
     spec:
       containers:
-      - name: portfolio
-        image: rileywebdev/website-app:v1.0.1
-        ports:
-        - containerPort: 80
-        env:
-        - name: SMTP_HOST
-          valueFrom:
-            secretKeyRef:
-              name: app-secrets
-              key: SMTP_HOST
-        - name: SMTP_PORT
-          valueFrom:
-            secretKeyRef:
-              name: app-secrets
-              key: SMTP_PORT
-        - name: SMTP_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: app-secrets
-              key: SMTP_USERNAME
-        - name: SMTP_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: app-secrets
-              key: SMTP_PASSWORD
-        - name: FROM_EMAIL
-          valueFrom:
-            secretKeyRef:
-              name: app-secrets
-              key: FROM_EMAIL
-        - name: TO_EMAIL
-          valueFrom:
-            secretKeyRef:
-              name: app-secrets
-              key: TO_EMAIL
+        - name: portfolio
+          image: rileywebdev/website-app:v1.0.1
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "125m"
+            limits:
+              memory: "512Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 80
+          env:
+            - name: SMTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: SMTP_HOST
+            - name: SMTP_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: SMTP_PORT
+            - name: SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: SMTP_USERNAME
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: SMTP_PASSWORD
+            - name: FROM_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: FROM_EMAIL
+            - name: TO_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: TO_EMAIL
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20
