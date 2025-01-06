@@ -37,8 +37,7 @@ jobs:
     - name: Set up kubeconfig
       run: |
         mkdir -p $HOME/.kube
-        cd $HOME/.kube
-        echo "${{ secrets.KUBE_CONFIG }}" > config
+        echo "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config
 
     # Step 6: Deploy to Kubernetes
     - name: Deploy to Kubernetes
