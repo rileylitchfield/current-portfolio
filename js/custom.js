@@ -39,8 +39,9 @@
                 url: form.attr("action"),
                 method: form.attr("method"),
                 data: form.serialize(),
+                dataType: "json",
                 success: function (result) {
-                    if (result == 'success') {
+                    if (result.status === "success") {
                         $(".contactform").find(".output_message").addClass("success");
                         $(".output_message").text("Message Sent!");
                     } else {

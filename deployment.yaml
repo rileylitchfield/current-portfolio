@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: rileywebdev/website-app:v1.0.1
-          imagePullPolicy: IfNotPresent
+          image: rileywebdev/website-app:v1.0.2
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "256Mi"
@@ -60,6 +60,11 @@ spec:
                 secretKeyRef:
                   name: app-secrets
                   key: TO_EMAIL
+            - name: HCAPTCHA_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: HCAPTCHA_SECRET
           readinessProbe:
             httpGet:
               path: /
