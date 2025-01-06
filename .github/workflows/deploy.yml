@@ -36,8 +36,10 @@ jobs:
     # Step 5: Configure kubeconfig
     - name: Set up kubeconfig
       run: |
-        echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
-        export KUBECONFIG=$PWD/kubeconfig
+        mkdir -p $HOME/.kube
+        cd $HOME/.kube
+        echo "${{ secrets.KUBE_CONFIG }}" > config
+        export KUBECONFIG=$HOME/.kube/config
 
     # Step 6: Deploy to Kubernetes
     - name: Deploy to Kubernetes
