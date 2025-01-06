@@ -39,7 +39,6 @@ jobs:
         mkdir -p $HOME/.kube
         cd $HOME/.kube
         echo "${{ secrets.KUBE_CONFIG }}" > config
-        export KUBECONFIG=$HOME/.kube/config
 
     # Step 6: Deploy to Kubernetes
     - name: Deploy to Kubernetes
