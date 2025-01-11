@@ -962,7 +962,7 @@ section.bl-expand .bl-icon-close {
   margin-bottom: 10px;
 }
 
-.resume-card-body.skills .resume-content h6 {
+.resume-card-body.certifications .resume-content h6 {
   margin-bottom: 0;
 }
 
@@ -1434,10 +1434,6 @@ ul.social-intro li a {
   margin-top: 14px;
 }
 
-.bl-main>section:nth-child(4).bl-expand .contact .rightside .input-field {
-  margin-bottom: 24px;
-}
-
 .bl-main>section:nth-child(4).bl-expand .contact .rightside .submit-form {
   padding-left: 0;
 }
@@ -1776,10 +1772,6 @@ body.blog .pagination li a i {
 
 .comments-form form .input-field label {
   font-size: 15px;
-}
-
-.comments-form .input-field {
-  margin-bottom: 24px;
 }
 
 .comments-form button {
