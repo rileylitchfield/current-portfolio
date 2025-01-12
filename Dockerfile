@@ -1,16 +1,18 @@
 # Use an official PHP image with Apache
 FROM php:8.1-apache
 
-# Install Composer
+# Install Composer and necessary utilities
 RUN apt-get update && apt-get install -y curl unzip \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Copy website files to the web root
-COPY . /var/www/html
-
-# Install PHP dependencies (PHPMailer)
+# Set the working directory
 WORKDIR /var/www/html
-RUN composer install
+
+# Copy project files
+COPY . .
+
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader
 
 # Set proper permissions
 RUN chown -R www-data:www-data /var/www/html \
