@@ -53,5 +53,8 @@ jobs:
     # Step 7: Deploy to Kubernetes
     - name: Deploy to Kubernetes
       run: |
+        kubectl apply -f secrets.yaml
+        kubectl apply -f clusterissuer.yaml
         kubectl apply -f deployment.yaml
-        kubectl set image deployment/portfolio-deployment portfolio=${{ secrets.DOCKER_USERNAME }}/website-app:v${{ env.RELEASE_VERSION }}
+        kubectl apply -f service.yaml
+        kubectl apply -f ingress.yaml
