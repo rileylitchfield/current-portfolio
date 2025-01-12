@@ -4,7 +4,7 @@ metadata:
   name: portfolio-deployment
   labels:
     app: portfolio
-    version: v1.0.1
+    version: ${VERSION}
 spec:
   replicas: 2
   selector:
@@ -14,11 +14,11 @@ spec:
     metadata:
       labels:
         app: portfolio
-        version: v1.0.1
+        version: ${VERSION}
     spec:
       containers:
         - name: portfolio
-          image: rileywebdev/website-app:v1.0.2
+          image: rileywebdev/website-app:${VERSION}
           imagePullPolicy: Always
           resources:
             requests:
