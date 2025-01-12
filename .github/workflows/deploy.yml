@@ -19,7 +19,7 @@ jobs:
     - name: Generate version number
       run: |
         DATE=$(date +'%Y%m%d')
-        RELEASE_VERSION="v${DATE}.${{ github.run_number }}"
+        RELEASE_VERSION="${DATE}.${{ github.run_number }}"
         echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV 
     - name: Add version to deployment.yaml
       run: |
