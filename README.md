@@ -149,6 +149,10 @@ current-portfolio/
 
 - **Monitoring**:
   - Integrate Prometheus and Grafana for detailed metrics and custom dashboards.
+- **Infrastructure as Code (IaC)**:
+  - Transition the Kubernetes cluster from DigitalOcean Kubernetes (DOKS) to Amazon Web Services (AWS).
+  - Use Terraform to provision and manage the infrastructure, including the Kubernetes cluster (EKS), load balancers, VPCs, and associated cloud resources.
+  - Define reusable Terraform modules to improve infrastructure consistency and scalability.
 
 ---
 
