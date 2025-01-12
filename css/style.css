@@ -390,6 +390,12 @@ body.dark .responsive-video {
 }
 
 .title-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
   position: absolute;
   width: 100%;
   text-align: center;
@@ -1380,7 +1386,9 @@ div.bl-panel-items a.btn {
 
 ul.social-intro {
   margin: 0;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .social-intro li {
@@ -1392,6 +1400,10 @@ ul.social-intro {
 ul.social-intro li a {
   color: #fff !important;
   transition: .3s ease-out;
+}
+
+ul.social-intro li a i {
+  font-size: 2rem;
 }
 
 .bl-main>section:nth-child(4).bl-expand ul.social-intro li a {
