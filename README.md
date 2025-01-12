@@ -17,11 +17,13 @@ A responsive personal website featuring a contact form powered by a PHP backend.
   - `docker-compose.yml` for local testing.
  
 - **Kubernetes Deployment**:
-  - Deployment and Service manifests for application orchestration.
-  - Secrets management to securely store sensitive credentials.
+  - Kubernetes manifests for deployment, service, and ingress.
+  - NGINX ingress controller to manage external traffic and SSL termination.
+  - Secrets management for securely storing sensitive credentials.
 
 - **Cloud Deployment**:
   - Live application hosted on a Kubernetes cluster with external access via a LoadBalancer.
+  - External access via NGINX ingress with HTTPS enforcement.
 
 ---
 
@@ -40,7 +42,7 @@ Follow these instructions to deploy and run the project locally or in a Kubernet
 ### Local Setup with Docker
 
 1. **Clone the Repository**:
-   ```bash
+   ```
    git clone https://github.com/rileylitchfield/current-portfolio.git
    cd current-portfolio
    ```
@@ -57,11 +59,11 @@ Follow these instructions to deploy and run the project locally or in a Kubernet
      ```
 
 3. **Build and Run the Application**:
-   ```bash
+   ```
    docker-compose up --build
    ```
 
-4. **Access the Website:**:
+4. **Access the Website**:
    - Open your browser and navigate to:
      ```
      http://localhost:8080
@@ -76,24 +78,31 @@ Follow these instructions to deploy and run the project locally or in a Kubernet
 
 2. **Apply the Secrets**:
    - Use `secrets.yaml` to store sensitive credentials:
-     ```bash
+     ```
      kubectl apply -f secrets.yaml
      ```
 
-3. **Deploy the Application:**:
-   ```bash
+3. **Deploy the Application**:
+   ```
    kubectl apply -f deployment.yaml
    kubectl apply -f service.yaml
+   kubectl apply -f ingress.yaml
    ```
 
-4. **Access the Website:**:
-   - Get the external IP of your service:
+4. **Configure HTTPS**:
+   - Install `Cert-Manager` and configure TLS certificates:
+   ```
+   kubectl apply -f clusterissuer.yaml
+   ```
+
+4. **Access the Website**:
+   - Get the external IP of the NGINX ingress controller:
      ```
-     kubectl get services
+     kubectl get ingress
      ```
-   - Open the IP in your browser:
+   - Open the IP or domain in your browser:
      ```
-     http://<EXTERNAL-IP>
+     https://your-domain.com
      ```
 
 ---
@@ -101,13 +110,12 @@ Follow these instructions to deploy and run the project locally or in a Kubernet
 ## Project Structure
 
 ```plaintext
-website/
+current-portfolio/
 ├── css/                   # Stylesheets
 ├── fonts/                 # Fonts used in the website
 ├── images/                # Image assets
 ├── js/                    # JavaScript files
 ├── php/                   # PHP backend files (e.g., process-form.php)
-├── vendor/                # Composer dependencies (e.g., PHPMailer)
 ├── .env                   # Environment variables (local use only)
 ├── .gitignore             # Ignored files/folders
 ├── composer.json          # PHP dependency manager configuration
@@ -115,8 +123,10 @@ website/
 ├── docker-compose.yml     # Docker Compose configuration
 ├── Dockerfile             # Docker build instructions
 ├── deployment.yaml        # Kubernetes deployment manifest
+├── ingress.yaml           # Kubernetes ingress manifest
 ├── service.yaml           # Kubernetes service manifest
 ├── secrets.yaml           # Kubernetes secrets (excluded from Git)
+├── clusterissuer.yaml     # Cert-Manager issuer for TLS
 ├── index.html             # Main frontend file
 ```
 
@@ -128,6 +138,7 @@ website/
 - **Backend**: PHP with PHPMailer for email handling.
 - **Containerization**: Docker and Docker Compose.
 - **Orchestration**: Kubernetes for deployment, scaling, and management.
+- **Ingress Management**: NGINX ingress controller for traffic routing.
 - **Cloud Hosting**: DigitalOcean Kubernetes.
 - **Secrets Management**: Kubernetes Secrets for secure configuration.
 - **Email Testing**: Mailtrap for SMTP testing.
@@ -136,12 +147,12 @@ website/
 
 ## Future Enhancements
 
-- **HTTPS Support**:
-  - Add an NGINX Ingress Controller and configure TLS with Cert-Manager.
 - **Monitoring**:
   - Integrate Prometheus and Grafana for detailed metrics and custom dashboards.
-- **CI/CD Pipeline**:
-  - Automate builds and deployments using GitHub Actions.
+- **Infrastructure as Code (IaC)**:
+  - Transition the Kubernetes cluster from DigitalOcean Kubernetes (DOKS) to Amazon Web Services (AWS).
+  - Use Terraform to provision and manage the infrastructure, including the Kubernetes cluster (EKS), load balancers, VPCs, and associated cloud resources.
+  - Define reusable Terraform modules to improve infrastructure consistency and scalability.
 
 ---
 
@@ -149,5 +160,6 @@ website/
 
 - [PHPMailer](https://github.com/PHPMailer/PHPMailer) for email handling.
 - [Docker](https://www.docker.com/) and [Kubernetes](https://kubernetes.io/) for modern deployment practices.
+- [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) for HTTPS and routing.
 - [Mailtrap](https://mailtrap.io/) for email testing.
 - [DigitalOcean](https://www.digitalocean.com/) for cloud hosting.
