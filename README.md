@@ -142,6 +142,23 @@ current-portfolio/
 - **Cloud Hosting**: DigitalOcean Kubernetes.
 - **Secrets Management**: Kubernetes Secrets for secure configuration.
 - **Email Testing**: Mailtrap for SMTP testing.
+- **CI/CD Pipeline**: GitHub Actions for automating builds and deployments.
+
+---
+
+## CI/CD Pipeline
+This project uses **GitHub Actions** to automate the following workflows:
+- **Docker Image Build and Push**:
+  - Automatically builds the Docker image from the `Dockerfile` and pushes it to a container registry upon code changes in the repository.
+- **Kubernetes Deployment:**
+  - Applies updated Kubernetes manifests (e.g., `deployment.yaml`, `service.yaml`, `ingress.yaml`) to the cluster upon successful Docker builds.
+
+### How It Works
+1. **Trigger:** The pipeline is triggered on every `push` to the `main` branch.
+2. **Build:** The Docker image is built and pushed to a container registry.
+3. **Deploy:** The updated Docker image is deployed to the Kubernetes cluster.
+
+GitHub Actions Workflow File: `.github/workflows/deploy.yml`
 
 ---
 
