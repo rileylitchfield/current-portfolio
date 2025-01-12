@@ -53,7 +53,6 @@ jobs:
     # Step 7: Deploy to Kubernetes
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f secrets.yaml
         kubectl apply -f clusterissuer.yaml
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
