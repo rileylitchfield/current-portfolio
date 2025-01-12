@@ -1393,7 +1393,8 @@ ul.social-intro {
 
 .social-intro li {
   display: inline-block;
-  margin-right: 14px;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
   float: left;
 }
 
