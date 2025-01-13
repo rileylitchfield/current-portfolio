@@ -6,7 +6,6 @@ metadata:
     app: portfolio
     version: "${VERSION}"
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: portfolio
@@ -22,11 +21,11 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "256Mi"
-              cpu: "125m"
+              memory: "128Mi"
+              cpu: "12m"
             limits:
-              memory: "512Mi"
-              cpu: "250m"
+              memory: "256Mi"
+              cpu: "24m"
           ports:
             - containerPort: 80
           env:
