@@ -2,11 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: portfolio-ingress
+  namespace: default
   annotations:
+    kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: letsencrypt-production
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
-  ingressClassName: nginx
+  ingressClassName: "nginx"
   tls:
     - hosts:
         - rileylitchfield.com
@@ -16,20 +18,19 @@ spec:
     - host: rileylitchfield.com
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          # Route /store and any subpaths to your eCommerce service
+          - path: /store(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
-                name: portfolio-service
+                name: ecommerce-project       # Change this to the service name for your store
                 port:
-                  number: 80
-    - host: www.rileylitchfield.com
-      http:
-        paths:
+                  number: 80                  # Make sure this matches your eCommerce service port
+          # Route all other paths to your portfolio service
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: portfolio-service
+                name: portfolio-service       # Your portfolio service name
                 port:
                   number: 80
