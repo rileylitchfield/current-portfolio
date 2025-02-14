@@ -27,6 +27,17 @@ spec:
                 name: portfolio-service
                 port:
                   number: 80
+    # WWW portfolio site
+    - host: www.rileylitchfield.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio-service
+                port:
+                  number: 80
     # Store subdomain
     - host: store.rileylitchfield.com
       http:
