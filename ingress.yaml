@@ -28,8 +28,8 @@
                    port:
                      number: 80
              # Portfolio service without rewrite
-             - path: /
-               pathType: Prefix
+             - path: /(.*)
+               pathType: ImplementationSpecific
                backend:
                  service:
                    name: portfolio-service
