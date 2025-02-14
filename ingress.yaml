@@ -1,37 +1,37 @@
-   apiVersion: networking.k8s.io/v1
-   kind: Ingress
-   metadata:
-     name: portfolio-ingress
-     namespace: default
-     annotations:
-       cert-manager.io/cluster-issuer: letsencrypt-production
-       kubernetes.io/ingress.class: nginx
-       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-       nginx.ingress.kubernetes.io/rewrite-target: /$2
-   spec:
-     ingressClassName: "nginx"
-     tls:
-       - hosts:
-           - rileylitchfield.com
-           - www.rileylitchfield.com
-         secretName: portfolio-tls
-     rules:
-       - host: rileylitchfield.com
-         http:
-           paths:
-             # Store service with rewrite
-             - path: /store(/|$)(.*)
-               pathType: ImplementationSpecific
-               backend:
-                 service:
-                   name: ecommerce-project
-                   port:
-                     number: 80
-             # Portfolio service without rewrite
-             - path: /(.*)
-               pathType: ImplementationSpecific
-               backend:
-                 service:
-                   name: portfolio-service
-                   port:
-                     number: 80
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio-ingress
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: "nginx"
+  tls:
+    - hosts:
+        - rileylitchfield.com
+        - www.rileylitchfield.com
+      secretName: portfolio-tls
+  rules:
+    - host: rileylitchfield.com
+      http:
+        paths:
+          # Store paths
+          - path: /store/?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ecommerce-project
+                port:
+                  number: 80
+          # Static files and other portfolio paths
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio-service
+                port:
+                  number: 80
