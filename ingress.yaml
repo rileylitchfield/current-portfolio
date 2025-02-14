@@ -7,35 +7,34 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    # Only rewrite /store paths
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      location /store {
-        rewrite ^/store(/.*)$ $1 break;
-      }
 spec:
   ingressClassName: "nginx"
   tls:
     - hosts:
         - rileylitchfield.com
         - www.rileylitchfield.com
+        - store.rileylitchfield.com
       secretName: portfolio-tls
   rules:
+    # Main portfolio site
     - host: rileylitchfield.com
       http:
         paths:
-          # Store path
-          - path: /store
-            pathType: Prefix
-            backend:
-              service:
-                name: ecommerce-project
-                port:
-                  number: 80
-          # Portfolio (no rewrite)
           - path: /
             pathType: Prefix
             backend:
               service:
                 name: portfolio-service
+                port:
+                  number: 80
+    # Store subdomain
+    - host: store.rileylitchfield.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ecommerce-project
                 port:
                   number: 80
