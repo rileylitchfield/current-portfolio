@@ -7,6 +7,7 @@
        cert-manager.io/cluster-issuer: letsencrypt-production
        kubernetes.io/ingress.class: nginx
        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+       nginx.ingress.kubernetes.io/rewrite-target: /$2
    spec:
      ingressClassName: "nginx"
      tls:
@@ -18,7 +19,7 @@
        - host: rileylitchfield.com
          http:
            paths:
-             # Store service with its own rewrite rule
+             # Store service with rewrite
              - path: /store(/|$)(.*)
                pathType: ImplementationSpecific
                backend:
@@ -26,8 +27,6 @@
                    name: ecommerce-project
                    port:
                      number: 80
-               annotations:
-                 nginx.ingress.kubernetes.io/rewrite-target: /$2
              # Portfolio service without rewrite
              - path: /
                pathType: Prefix
