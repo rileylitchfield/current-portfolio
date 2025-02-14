@@ -4,12 +4,20 @@ metadata:
   name: portfolio-ingress
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
-    kubernetes.io/ingress.class: nginx
+    # Where your TLS certs come from:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+
+    # Tells K8s to use the NGINX ingress controller:
+    kubernetes.io/ingress.class: "nginx"
+
+    # Force HTTPS:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # IMPORTANT for rewriting:
     nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "/$2"
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   tls:
     - hosts:
         - rileylitchfield.com
@@ -19,15 +27,16 @@ spec:
     - host: rileylitchfield.com
       http:
         paths:
-          # Store paths
-          - path: /store/?(.*)
+          # Rewrite requests from /store/something -> /something
+          - path: /store(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
                 name: ecommerce-project
                 port:
                   number: 80
-          # Static files and other portfolio paths
+
+          # Everything else goes to portfolio
           - path: /
             pathType: Prefix
             backend:
