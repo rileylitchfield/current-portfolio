@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Riley Litchfield - Web Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        @font-face {
+            font-family: 'Lato';
+            src: url('./fonts/Lato/Lato-Black.ttf') format('truetype'),
+                url('./fonts/Lato/Lato-Bold.ttf') format('truetype'),
+                url('./fonts/Lato/Lato-Regular.ttf') format('truetype');
+        }
+        
+        .output_message {
+            display: block;
+            padding: 0 16px;
+            height: 36px;
+            line-height: 36px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        
+        .output_message.success {
+            background-color: #4CAF50;
+            color: #ffffff;
+        }
+        
+        .output_message.error {
+            background-color: #F44336;
+            color: #ffffff;
+        }
+
+        /* Styles for the button when it shows a success message */
+        .btn.btn-success,
+        .btn.btn-success[disabled] {
+            background-color: #c8e6c9 !important; /* Light Green (Material Design like) */
+            color: #1b5e20 !important; /* Dark Green text/icon (Material Design like) */
+            cursor: default !important; /* Show default cursor as it's not truly interactive */
+        }
+
+        .btn.btn-success[disabled]:hover {
+            background-color: #c8e6c9 !important; /* Keep same color, no hover change when disabled */
+        }
+
+        /* Styles for the button when it shows an error message */
+        .btn.btn-error,
+        .btn.btn-error[disabled] {
+            background-color: #ffcdd2 !important; /* Light Red (Material Design like) */
+            color: #b71c1c !important; /* Dark Red text/icon (Material Design like) */
+            cursor: default !important; /* Show default cursor */
+        }
+
+        .btn.btn-error[disabled]:hover {
+            background-color: #ffcdd2 !important; /* Keep same color, no hover change when disabled */
+        }
+
+        /* Original hover states for when the button is NOT disabled (if needed later) */
+        .btn.btn-success:not([disabled]):hover {
+            background-color: #a5d6a7 !important; 
+        }
+        .btn.btn-error:not([disabled]):hover {
+            background-color: #ef9a9a !important; 
+        }
+
+        /* Ensure icons in the button are spaced slightly */
+        .btn i.fa {
+            margin-right: 5px;
+        }
+    </style>
+
+    <!-- Template CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.animatedheadline.css" />
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/skins/yellow.css" />
+
+    <!-- Template JS Files -->
+    <script src="js/modernizr.custom.js"></script>
+
+    <meta property="og:title" content="Riley Litchfield - Web Developer" />
+    <meta property="og:description" content="A portfolio website showcasing my web projects." />
+    <meta property="og:image" content="https://rileylitchfield.com/images/riley_meta.jpg" />
+    <meta property="og:url" content="https://rileylitchfield.com" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+</head>
+
+<body class="dark">
+    <!-- Preloader Start -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!-- Preloader Ends -->
+    <!-- Wrapper Starts -->
+    <div class="wrapper">
+        <div class="main-picture hide-on-med-and-down">
+        </div>
+        <div id="bl-main" class="bl-main">
+            <!-- Top Left Section Starts -->
+            <section class="topleft">
+                <div class="bl-box row valign-wrapper">
+                    <div class="row valign-wrapper mb-0">
+                        <div class="title-heading">
+                            <div class="selector uppercase" id="selector">
+                                <h3 class="ah-headline p-none m-none">
+                                    <span class="font-weight-400">Hi There! I'm</span>
+                                    <span class="my-name">Riley Litchfield</span>
+                                    <span class="ah-words-wrapper">
+                                        <b class="is-visible">web developer</b>
+                                        <b>automation expert</b>
+                                        <b>kubernetes specialist</b>
+                                        <b>devops enthusiast</b>
+                                        <b>php developer</b>
+                                        <b>javascript developer</b>
+                                    </span>
+                                </h3>
+                            </div>
+                            <ul class="list-inline social social-intro center-align p-none">
+                                <li class="linkedin"><a href="https://linkedin.com/in/rileylitchfield"
+                                        target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li class="github"><a href="https://github.com/rileylitchfield" target="_blank"
+                                        style="line-height: 32px;"><i
+                                            class="fa fa-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Top Left Section Ends -->
+            <!-- About Section Starts -->
+            <section>
+                <!-- About Title Starts -->
+                <div class="bl-box valign-wrapper">
+                    <div class="page-title center-align">
+                        <h2 class="center-align">
+                            <span data-hover="About">About </span>
+                            <span data-hover="Me">Me</span>
+                        </h2>
+                    </div>
+                </div>
+                <!-- About Title Ends -->
+                <!-- About Expanded Starts -->
+                <div class="bl-content">
+                    <!-- Main Heading Starts -->
+                    <div class="container page-title custom-page-title">
+                        <h2 class="center-align">
+                            <span>About</span>
+                            <span>Me</span>
+                        </h2>
+                    </div>
+                    <!-- Main Heading Ends -->
+                    <div class="container infos">
+                        <!-- Divider Starts -->
+                        <div class="divider center-align">
+                            <span class="outer-line"></span>
+                            <span class="fa fa-vcard" aria-hidden="true"></span>
+                            <span class="outer-line"></span>
+                        </div>
+                        <!-- Divider Ends -->
+                        <!-- Personal Informations Starts -->
+                        <div class="row">
+                            <div class="col s12 m8 l12 xl12 personal-info section-padding">
+                                <div class="col m12 l12 xl9 p-none">
+                                    <p>Hi, I'm Riley Litchfield, a developer from Houston, TX, who thrives on tackling
+                                        complex challenges and ensuring systems run like clockwork. My background
+                                        spans web development, cloud integrations, and infrastructure optimization in
+                                        environments like Azure and Kubernetes. Along the way, I've had the chance to
+                                        streamline workflows through automation, configure proactive monitoring and
+                                        alerts, and prioritize secure deployments—always keeping reliability front and
+                                        center.</p>
+                                    <br>
+                                    <p>I'm driven by a passion for continuous improvement and love exploring new
+                                        technologies to push my skills further. Whether it's containerizing
+                                        microservices, fine-tuning resource usage, or setting up robust CI/CD pipelines,
+                                        my goal is to deliver systems that are scalable, secure, and built to handle
+                                        whatever comes next. I thrive at the intersection of development and operations,
+                                        and I'm excited to keep learning, growing, and contributing wherever I can make
+                                        the biggest impact.</p>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Personal Informations Ends -->
+                    </div>
+                    <!-- Resume Starts -->
+                    <div class="resume-container">
+                        <div class="container">
+                            <div class="valign-wrapper row">
+                                <!-- Resume Menu Starts -->
+                                <div class="resume-list col l4 section-padding">
+                                    <div class="resume-list-item is-active" data-index="0" id="resume-list-item-0">
+                                        <div class="resume-list-item-inner">
+                                            <h6 class="resume-list-item-title uppercase"><i class="fa fa-briefcase"></i>
+                                                Experience</h6>
+                                        </div>
+                                    </div>
+                                    <div class="resume-list-item" data-index="1" id="resume-list-item-1">
+                                        <div class="resume-list-item-inner">
+                                            <h6 class="resume-list-item-title uppercase"><i
+                                                    class="fa fa-graduation-cap"></i> Education</h6>
+                                        </div>
+                                    </div>
+                                    <div class="resume-list-item" data-index="2" id="resume-list-item-2">
+                                        <div class="resume-list-item-inner">
+                                            <h6 class="resume-list-item-title uppercase"><i class="fa fa-star"></i>
+                                                Certifications</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Resume Menu Ends -->
+                                <!-- Resume Content Starts -->
+                                <div class="col s12 m12 l8 resume-cards-container section-padding">
+                                    <div class="resume-cards">
+                                        <!-- Experience Starts -->
+                                        <div class="resume-card resume-card-0" data-index="0">
+                                            <!-- Experience Header Title Starts -->
+                                            <div class="resume-card-header">
+                                                <div class="resume-card-name"><i class="fa fa-briefcase"></i> Experience
+                                                </div>
+                                            </div>
+                                            <!-- Experience Header Title Ends -->
+                                            <!-- Experience Content Starts -->
+                                            <div class="resume-card-body experience">
+                                                <div class="resume-card-body-container second-font">
+                                                    <!-- Single Experience Starts -->
+                                                    <div class="resume-content">
+                                                        <h6 class="uppercase"><span>IT Systems Developer -
+                                                            </span>LiquidPower Specialty Products, Inc.
+                                                        </h6>
+                                                        <span class="date"><i class="fa fa-calendar-o"></i> Feb 2024 -
+                                                            Current</span>
+                                                        <p>As an IT Systems Developer, I specialize in optimizing
+                                                            infrastructure, automating workflows, and integrating APIs
+                                                            to improve efficiency and reliability. In this role, I
+                                                            configure CI/CD pipelines, set up proactive monitoring and
+                                                            alerting systems, and manage Kubernetes clusters for
+                                                            scalable, resilient infrastructure. I also automate key
+                                                            processes, integrate cloud and on-premises systems with
+                                                            APIs, and ensure adherence to security best practices,
+                                                            contributing to high-performing, secure deployments.
+                                                        </p>
+                                                    </div>
+                                                    <!-- Single Experience Ends -->
+                                                    <span class="separator"></span>
+                                                    <!-- Single Experience Starts -->
+                                                    <div class="resume-content">
+                                                        <h6 class="uppercase"><span>Web Developer -
+                                                            </span>Experis</h6>
+                                                        <span class="date"><i class="fa fa-calendar-o"></i> Jan 2023 -
+                                                            Feb 2024</span>
+                                                        <p>As a Web Developer, I redesigned and migrated business
+                                                            websites from static HTML/CSS/JS websites to flexible
+                                                            WordPress platforms. I developed custom child themes and
+                                                            plugins using PHP to enhance functionality for end-users.
+                                                            Additionally, I resolved existing JavaScript errors,
+                                                            improved security scores, and boosted page speed metrics by
+                                                            up to 350%.
+                                                        </p>
+                                                    </div>
+                                                    <!-- Single Experience Ends -->
+                                                </div>
+                                            </div>
+                                            <!-- Experience Content Starts -->
+                                        </div>
+                                        <!-- Experience Ends -->
+                                        <!-- Education Starts -->
+                                        <div class="resume-card resume-card-1" data-index="1">
+                                            <!-- Education Header Title Starts -->
+                                            <div class="resume-card-header">
+                                                <div class="resume-card-name"><i class="fa fa-graduation-cap"></i>
+                                                    Education</div>
+                                            </div>
+                                            <!-- Education Header Title Starts -->
+                                            <div class="resume-card-body education">
+                                                <div class="resume-card-body-container second-font">
+                                                    <!-- Single Education Starts -->
+                                                    <div class="resume-content">
+                                                        <h6 class="uppercase"><span>Coding Bootcamp -
+                                                            </span>freeCodeCamp</h6>
+                                                        <!-- <span class="date"><i class="fa fa-calendar-o"></i> 2015 -
+                                                            2017</span> -->
+                                                        <p>Through the comprehensive curriculum at freeCodeCamp,
+                                                            I delved deeply into responsive web design, JavaScript
+                                                            algorithms and data structures, and front-end development
+                                                            libraries. This rigorous training honed my skills, enabling
+                                                            me to develop fluid, adaptable, and interactive websites.
+                                                            Leveraging these enhanced capabilities, I've made
+                                                            substantial contributions to the improvement of web project
+                                                            designs, user-centric functionalities, and overall
+                                                            performance metrics.</p>
+                                                    </div>
+                                                    <!-- Single Education Ends -->
+                                                    <span class="separator"></span>
+                                                    <!-- Single Education Starts -->
+                                                    <div class="resume-content">
+                                                        <h6 class="uppercase"><span>A.S. in Electrical Engineering -
+                                                            </span>Lone Star College</h6>
+                                                        <!-- <span class="date"><i class="fa fa-calendar-o"></i> 2011 -
+                                                            2015</span> -->
+                                                        <p>Through my Electrical Engineering degree, I acquired a
+                                                            robust foundation in problem-solving, analytical thinking,
+                                                            and logical reasoning, all of which are integral to
+                                                            successful web development. The discipline taught me how
+                                                            systems interact, influencing my approach to coding and
+                                                            architecture in HTML, CSS, JS, jQuery, and PHP. This
+                                                            knowledge has been instrumental in crafting efficient,
+                                                            maintainable websites and applications.</p>
+                                                    </div>
+                                                    <!-- Single Education Ends -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Education Ends -->
+                                        <!-- Certifications Starts -->
+                                        <div class="resume-card resume-card-2" data-index="2">
+                                            <!-- Certifications Header Title Starts -->
+                                            <div class="resume-card-header">
+                                                <div class="resume-card-name"><i class="fa fa-star"></i> Certifications
+                                                </div>
+                                            </div>
+                                            <!-- Certifications Header Title Starts -->
+                                            <div class="resume-card-body certifications">
+                                                <div class="resume-card-body-container second-font">
+                                                    <!-- Single Education Starts -->
+                                                    <div class="resume-content">
+                                                        <h6 class="uppercase"><span>Microsoft Certified:
+                                                            </span>Microsoft Azure Administrator (AZ-104)</h6>
+                                                        <!-- <span class="date"><i class="fa fa-calendar-o"></i> 2015 -
+                                                            2017</span> -->
+                                                        <p>Studied Azure administration concepts, including managing
+                                                            resources such as virtual machines, storage, and virtual
+                                                            networks using Azure Portal, PowerShell, and CLI. Learned
+                                                            how to configure identity and access management (Azure AD,
+                                                            RBAC), set up monitoring and alerts with Azure Monitor,
+                                                            implement backup and recovery strategies, and secure
+                                                            environments with tools like Azure Key Vault.
+                                                        </p>
+                                                    </div>
+                                                    <!-- Single Education Ends -->
+                                                    <span class="separator"></span>
+                                                    <!-- Single Education Starts -->
+                                                    <div class="resume-content">
+                                                        <h6 class="uppercase"><span>Microsoft Certified</span>: Azure
+                                                            Fundamentals (AZ-900)</h6>
+                                                        <p>Explored the fundamentals of cloud computing and Azure's core
+                                                            services, including compute, storage, networking, and
+                                                            databases. Learned about Azure's security and compliance
+                                                            features, identity management with Azure Active Directory,
+                                                            and tools for cost management and support options.</p>
+                                                    </div>
+                                                    <!-- Single Education Ends -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Certifications Ends -->
+                                    </div>
+                                </div>
+                                <!-- Resume Content Ends -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Resume Ends -->
+                </div>
+                <!-- End Expanded About -->
+                <img alt="close" src="images/close-button.png" class="bl-icon-close" />
+            </section>
+            <!-- About Ends -->
+            <!-- Portfolio Starts -->
+            <section id="bl-work-section">
+                <!-- Portfolio Title Starts -->
+                <div class="bl-box valign-wrapper">
+                    <div class="page-title center-align">
+                        <h2 class="center-align">
+                            <span data-hover="my">my </span>
+                            <span data-hover="portfolio">portfolio</span>
+                        </h2>
+                    </div>
+                </div>
+                <!-- Portfolio Title Ends -->
+                <!-- Portfolio Expanded Starts -->
+                <div class="bl-content">
+                    <!-- Main Heading Starts -->
+                    <div class="container page-title center-align">
+                        <h2 class="center-align">
+                            <span data-hover="my">my </span>
+                            <span data-hover="portfolio">portfolio</span>
+                        </h2>
+                    </div>
+                    <!-- Main Heading Ends -->
+                    <div class="container">
+                        <!-- Divider Starts -->
+                        <div class="divider center-align">
+                            <span class="outer-line"></span>
+                            <span class="fa fa-suitcase" aria-hidden="true"></span>
+                            <span class="outer-line"></span>
+                        </div>
+                        <!-- Divider Ends -->
+                        <div class="row center-align da-thumbs" id="bl-work-items">
+                            <!-- Project Starts -->
+                            <div class="col s12 m6 l6 xl6" data-panel="panel-1">
+                                <a href="#">
+                                    <img class="responsive-img" src="/images/projects/data.png" alt="Project" />
+                                    <div class="valign-wrapper"><span class="font-weight-700 uppercase">Data Science
+                                            Collaboratory</span></div>
+                                </a>
+                            </div>
+                            <!-- Project Ends -->
+                            <!-- Project Starts -->
+                            <div class="col s12 m6 l6 xl6" data-panel="panel-2">
+                                <a href="#">
+                                    <img class="responsive-img" src="/images/projects/events.png" alt="Project" />
+                                    <div class="valign-wrapper"><span class="font-weight-700 uppercase">Events Calendar
+                                            Plugin</span></div>
+                                </a>
+                            </div>
+                            <!-- Project Ends -->
+                            <!-- Project Starts -->
+                            <div class="col s12 m6 l6 xl6" data-panel="panel-3">
+                                <a href="#">
+                                    <img class="responsive-img" src="/images/projects/conv.png" alt="Project" />
+                                    <div class="valign-wrapper"><span class="font-weight-700 uppercase">ACF
+                                            Conversion</span></div>
+                                </a>
+                            </div>
+                            <!-- Project Ends -->
+                            <!-- Project Starts -->
+                            <div class="col s12 m6 l6 xl6" data-panel="panel-4">
+                                <a href="#">
+                                    <img class="responsive-img" src="/images/projects/markdown.png" alt="Project" />
+                                    <div class="valign-wrapper"><span class="font-weight-700 uppercase">Markdown
+                                            Previewer</span></div>
+                                </a>
+                            </div>
+                            <!-- Project Ends -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Expanded Ends -->
+                <img alt="close" src="images/close-button.png" class="bl-icon-close" />
+            </section>
+            <!-- Portfolio Section Ends -->
+            <!-- Contact Section Starts -->
+            <section>
+                <!-- Contact Title Starts -->
+                <div class="bl-box valign-wrapper">
+                    <div class="page-title center-align">
+                        <h2 class="center-align">
+                            <span data-hover="get">get </span>
+                            <span data-hover="in touch">in touch</span>
+                        </h2>
+                    </div>
+                </div>
+                <!-- Contact Title Ends -->
+                <!-- Expanded Contact Starts -->
+                <div class="bl-content">
+                    <!-- Main Heading Starts -->
+                    <div class="container page-title center-align">
+                        <h2 class="center-align">
+                            <span data-hover="get">get </span>
+                            <span data-hover="in touch">in touch</span>
+                        </h2>
+                    </div>
+                    <!-- Main Heading Ends -->
+                    <div class="container">
+                        <!-- Divider Starts -->
+                        <div class="divider center-align">
+                            <span class="outer-line"></span>
+                            <span class="fa fa-envelope-open" aria-hidden="true"></span>
+                            <span class="outer-line"></span>
+                        </div>
+                        <!-- Divider Ends -->
+                        <div class="row contact section-padding">
+                            <!-- Contact Form Starts -->
+                            <div class="col s12 m7 l7 xl8 rightside">
+                                <h6 class="uppercase m-none font-weight-700">Feel free to drop me a line</h6>
+                                <div class="row">
+                                    <p class="col s12 m12 l12 xl10 second-font">
+                                        <!-- Send me a message (Yes, I actually receive these messages!) -->
+                                    </p>
+                                </div>
+                                <form class="contactform" method="post" action="https://formspree.io/f/mnndwqyn" data-ajax="true">
+                                    <!-- Name Field Starts -->
+                                    <div class="input-field second-font">
+                                        <i class="fa fa-user prefix"></i>
+                                        <input id="name" name="name" type="text" class="validate" required>
+                                        <label class="font-weight-400" for="name">Your Name</label>
+                                    </div>
+                                    <!-- Name Field Ends -->
+                                    <!-- Email Field Starts -->
+                                    <div class="input-field second-font">
+                                        <i class="fa fa-envelope prefix"></i>
+                                        <input id="email" type="email" name="email" class="validate" required>
+                                        <label for="email">Your Email</label>
+                                    </div>
+                                    <!-- Email Field Ends -->
+                                    <!-- Comment Textarea Starts -->
+                                    <div class="input-field second-font">
+                                        <i class="fa fa-comments prefix"></i>
+                                        <textarea id="comment" name="message" class="materialize-textarea"
+                                            required></textarea>
+                                        <label for="comment">Your Comment</label>
+                                    </div>
+                                    <!-- Comment Textarea Ends -->
+                                    <!-- Hidden Fields for Formspree -->
+                                    <input type="hidden" name="_subject" value="New message from portfolio site">
+                                    <!-- Submit Form Button Starts -->
+                                    <div class="col s12 m12 l9 xl8 submit-form">
+                                        <button class="btn font-weight-700" type="submit">
+                                            Send Message <i class="fa fa-send"></i>
+                                        </button>
+                                    </div>
+                                    <!-- Submit Form Button Ends -->
+                                </form>
+                            </div>
+                            <!-- Contact Form Ends -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Expanded Contact Ends -->
+                <img alt="close" src="images/close-button.png" class="bl-icon-close" />
+            </section>
+            <!-- Contact Section Ends -->
+            <!-- Portfolio Panel Items Starts -->
+            <div class="bl-panel-items" id="bl-panel-work-items">
+                <!-- Project Starts -->
+                <div data-panel="panel-1">
+                    <div class="row">
+                        <!-- Project Main Content Starts -->
+                        <div class="col s12 l6 xl6 section-padding section-padding-right-none">
+                            <img class="responsive-img" src="/images/projects/data.png" alt="project" />
+                        </div>
+                        <!-- Project Main Content Ends -->
+                        <!-- Project Details Starts -->
+                        <div class="col s12 l6 xl6 section-padding">
+                            <h3 class="font-weight-700 uppercase">Data Science Collaboratory</h3>
+                            <ul class="project-details second-font">
+                                <li><i class="fa fa-user"></i><span class="font-weight-700"> Client </span>: <span
+                                        class="font-weight-400">Data Science Collaboratory at Colgate University</span>
+                                </li>
+                                <li><i class="fa fa-file"></i><span class="font-weight-700"> Project Description
+                                    </span>:
+                                    <span class="font-weight-400">A website to promote faculty research involving data
+                                        science and data management at Colgate University. Developed according to client
+                                        specifications.</span>
+                                </li>
+                                <li><i class="fa fa-cogs"></i> <span class="font-weight-700">Technologies</span> :
+                                    <span class="font-weight-400">Webflow, HTML, CSS, JavaScript</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <a href="https://shiny.colgate.edu/" class="waves-effect waves-light btn font-weight-700"
+                                target="_blank">Preview <i class="fa fa-external-link"></i></a>
+                        </div>
+                        <!-- Project Details Ends -->
+                    </div>
+                </div>
+                <!-- Project Ends -->
+                <!-- Project Starts -->
+                <div data-panel="panel-2">
+                    <div class="row">
+                        <!-- Project Main Content Starts -->
+                        <div class="col s12 l6 xl6 section-padding section-padding-right-none">
+                            <img class="responsive-img" src="/images/projects/events.png" alt="project" />
+                        </div>
+                        <!-- Project Main Content Ends -->
+                        <!-- Project Details Starts -->
+                        <div class="col s12 l6 xl6 section-padding">
+                            <h3 class="font-weight-700 uppercase">Events Calendar Plugin</h3>
+                            <ul class="project-details second-font">
+                                <li><i class="fa fa-user"></i><span class="font-weight-700"> Client </span>: <span
+                                        class="font-weight-400">Personal Project</span></li>
+                                <li><i class="fa fa-file"></i><span class="font-weight-700"> Project Description
+                                    </span>:
+                                    <span class="font-weight-400">A plugin developed for an end-user to create events
+                                        via custom post type
+                                        and display them with a shortcode.</span>
+                                </li>
+                                <li><i class="fa fa-cogs"></i> <span class="font-weight-700">Technologies</span> :
+                                    <span class="font-weight-400">WordPress, HTML, CSS, JavaScript, PHP</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <a href="https://testing.rileywebdev.com/events/"
+                                class="waves-effect waves-light btn font-weight-700" target="_blank">Preview <i
+                                    class="fa fa-external-link"></i></a>
+                        </div>
+                        <!-- Project Details Ends -->
+                    </div>
+                </div>
+                <!-- Project Ends -->
+                <!-- Project Starts -->
+                <div data-panel="panel-3">
+                    <div class="row">
+                        <!-- Project Main Content Starts -->
+                        <div class="col s12 l6 xl6 section-padding section-padding-right-none">
+                            <img class="responsive-img" src="/images/projects/conv.png" alt="project" />
+                        </div>
+                        <!-- Project Main Content Ends -->
+                        <!-- Project Details Starts -->
+                        <div class="col s12 l6 xl6 section-padding">
+                            <h3 class="font-weight-700 uppercase">HTML/CSS to WordPress Conversion</h3>
+                            <ul class="project-details second-font">
+                                <li><i class="fa fa-user"></i><span class="font-weight-700"> Client </span>: <span
+                                        class="font-weight-400">Personal Project</span></li>
+                                <li><i class="fa fa-file"></i><span class="font-weight-700"> Project Description
+                                    </span>:
+                                    <span class="font-weight-400">Converted HTML/CSS website into editable WordPress
+                                        website using custom child theme, ACF, and PHP. Features Custom Post Type to
+                                        edit the Amenities section at the bottom of the home page.</span>
+                                </li>
+                                <li><i class="fa fa-cogs"></i> <span class="font-weight-700">Technologies</span> :
+                                    <span class="font-weight-400">HTML, CSS, WordPress, PHP, ACF</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <a href="https://conversion.rileywebdev.com/"
+                                class="waves-effect waves-light btn font-weight-700" target="_blank">Preview <i
+                                    class="fa fa-external-link"></i></a>
+                        </div>
+                        <!-- Project Details Ends -->
+                    </div>
+                </div>
+                <!-- Project Ends -->
+                <!-- Project Starts -->
+                <div data-panel="panel-4">
+                    <div class="row">
+                        <!-- Project Main Content Starts -->
+                        <div class="col s12 l6 xl6 section-padding section-padding-right-none">
+                            <img class="responsive-img" src="/images/projects/markdown.png" alt="project" />
+                        </div>
+                        <!-- Project Main Content Ends -->
+                        <!-- Project Details Starts -->
+                        <div class="col s12 l6 xl6 section-padding">
+                            <h3 class="font-weight-700 uppercase">Markdown Previewer</h3>
+                            <ul class="project-details second-font">
+                                <li><i class="fa fa-user"></i><span class="font-weight-700"> Client </span>: <span
+                                        class="font-weight-400">Personal Project</span></li>
+                                <li><i class="fa fa-file"></i><span class="font-weight-700"> Project Description
+                                    </span>:
+                                    <span class="font-weight-400">A React application that allows users to enter
+                                        Markdown syntax into a textarea and see a live preview of the formatted
+                                        output.</span>
+                                </li>
+                                <li><i class="fa fa-cogs"></i> <span class="font-weight-700">Technologies</span> :
+                                    <span class="font-weight-400">React.js, Bootstrap, SCSS</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <a href="https://codepen.io/karateking/full/vYmYpqq"
+                                class="waves-effect waves-light btn font-weight-700" target="_blank">Preview <i
+                                    class="fa fa-external-link"></i></a>
+                        </div>
+                        <!-- Project Details Ends -->
+                    </div>
+                </div>
+                <!-- Project Ends -->
+                <!-- Portfolio Navigation Starts -->
+                <nav>
+                    <!-- Previous Work Icon Starts -->
+                    <span class="control-button bl-previous-work"><i class="fa fa-angle-left"></i></span>
+                    <!-- Previous Work Icon Ends -->
+                    <!-- Close Work Icon Starts -->
+                    <img alt="close" src="images/close-button.png" class="control-button bl-icon-close" />
+                    <!-- Close Work Icon Ends -->
+                    <!-- Next Work Icon Starts -->
+                    <span class="control-button bl-next-work"><i class="fa fa-angle-right"></i></span>
+                    <!-- Previous Work Icon Ends -->
+                </nav>
+                <!-- Portfolio Navigation Ends -->
+            </div>
+            <!-- Portfolio Panel Items Ends -->
+        </div>
+    </div>
+    <!-- Wrapper Ends -->
+
+    <!-- Template JS Files -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.animatedheadline.js"></script>
+    <script src="js/boxlayout.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/jquery.hoverdir.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
